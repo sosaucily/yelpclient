@@ -8,15 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var resultsTableView: UITableView!
     var restaurantResults: [Restaurant] = [Restaurant]()
+//    var countrySearchController = UISearchController()
+    let searchBarTop: UISearchBar = UISearchBar()
+    var filterButton: UIBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.getResults()
+        
+        self.searchBarTop.delegate = self
+        self.searchDisplayController?.displaysSearchBarInNavigationBar = true;
+        self.navigationItem.titleView = self.searchBarTop
+        self.filterButton = UIBarButtonItem(title: "Filter", style:UIBarButtonItemStyle.Bordered, target:self, action:nil)
+        self.navigationItem.leftBarButtonItem = self.filterButton
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,22 +46,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-////        let detailsViewController = MovieDetailsViewController(nibName: "MovieDetails", bundle: nil)
-////        
-////        let movieDictionary = self.moviesArray![indexPath.row] as NSDictionary
-////        let postersDict = movieDictionary["posters"] as NSDictionary
-////        
-////        let thumbUrl = postersDict["thumbnail"] as NSString
-////        detailsViewController.fullImageUrl = thumbUrl.stringByReplacingOccurrencesOfString("tmb", withString: "ori")
-////        detailsViewController.movieDescriptionDict = movieDictionary
-////        
-////        self.navigationController?.pushViewController(detailsViewController, animated: true)
-//    }
-    
     func getResults() {
         restaurantResults.append(Restaurant(description: "restaurant 1 is yummy"))
         restaurantResults.append(Restaurant(description: "restaurant 2 is lame"))
+    }
+    
+//    func updateSearchResultsForSearchController(searchController: UISearchController){
+//        println("search triggered with \(searchController.searchBar.text)")
+//    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        println("search triggered with \(searchBar.text)")
     }
 }
 
