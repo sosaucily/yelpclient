@@ -60,6 +60,43 @@
             </objects>
             <point key="canvasLocation" x="994" y="468"/>
         </scene>
+        <!--Filters Table View Controller-->
+        <scene sceneID="ap3-oS-lD1">
+            <objects>
+                <tableViewController id="RH6-Rc-gdQ" customClass="FiltersTableViewController" customModule="yelpclient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="kTT-h9-ylD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="filtercell" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtercell" rowHeight="82" id="DuM-dg-6bu" customClass="FilterCell" customModule="yelpclient" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DuM-dg-6bu" id="npB-Jn-msn">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3T-Ub-GhZ">
+                                            <rect key="frame" x="217" y="8" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="filterName" destination="k3T-Ub-GhZ" id="geS-bv-21r"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RH6-Rc-gdQ" id="8QQ-wx-t9S"/>
+                            <outlet property="delegate" destination="RH6-Rc-gdQ" id="WUb-xS-2XO"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdl-li-fdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="1144"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="npo-cy-0MB">
             <objects>
@@ -68,6 +105,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdB-yR-MLS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.81973930027173914" green="0.065297316923847881" blue="0.092144101202282391" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

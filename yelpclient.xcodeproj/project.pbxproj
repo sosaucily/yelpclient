@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */; };
 		1C92994519CE23C1001E16EE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994419CE23C1001E16EE /* Restaurant.swift */; };
-		1CA62F0119CE150C003128D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA62F0019CE150C003128D7 /* AppDelegate.swift */; };
+		1C92995D19CE4A9A001E16EE /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92995C19CE4A9A001E16EE /* FilterCell.swift */; };
+		1C92995E19CE4E87001E16EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA62F0019CE150C003128D7 /* AppDelegate.swift */; };
+		1C92996019CE4F48001E16EE /* FiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92995F19CE4F48001E16EE /* FiltersTableViewController.swift */; };
 		1CA62F0319CE150C003128D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA62F0219CE150C003128D7 /* ViewController.swift */; };
 		1CA62F0619CE150C003128D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CA62F0419CE150C003128D7 /* Main.storyboard */; };
 		1CA62F0819CE150C003128D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CA62F0719CE150C003128D7 /* Images.xcassets */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpCellTableViewCell.swift; sourceTree = "<group>"; };
 		1C92994419CE23C1001E16EE /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		1C92995C19CE4A9A001E16EE /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		1C92995F19CE4F48001E16EE /* FiltersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersTableViewController.swift; sourceTree = "<group>"; };
 		1CA62EFB19CE150C003128D7 /* yelpclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yelpclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA62EFF19CE150C003128D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CA62F0019CE150C003128D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		1CA62EFD19CE150C003128D7 /* yelpclient */ = {
 			isa = PBXGroup;
 			children = (
+				1C92995C19CE4A9A001E16EE /* FilterCell.swift */,
 				1CA62F0019CE150C003128D7 /* AppDelegate.swift */,
 				1CA62F0219CE150C003128D7 /* ViewController.swift */,
 				1CA62F0419CE150C003128D7 /* Main.storyboard */,
@@ -95,6 +100,7 @@
 				1CA62EFE19CE150C003128D7 /* Supporting Files */,
 				1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */,
 				1C92994419CE23C1001E16EE /* Restaurant.swift */,
+				1C92995F19CE4F48001E16EE /* FiltersTableViewController.swift */,
 			);
 			path = yelpclient;
 			sourceTree = "<group>";
@@ -267,10 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C92996019CE4F48001E16EE /* FiltersTableViewController.swift in Sources */,
+				1C92995E19CE4E87001E16EE /* AppDelegate.swift in Sources */,
+				1C92995D19CE4A9A001E16EE /* FilterCell.swift in Sources */,
 				1C92994519CE23C1001E16EE /* Restaurant.swift in Sources */,
 				1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */,
 				1CA62F0319CE150C003128D7 /* ViewController.swift in Sources */,
-				1CA62F0119CE150C003128D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

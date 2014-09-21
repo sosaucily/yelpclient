@@ -24,8 +24,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.searchBarTop.delegate = self
         self.searchDisplayController?.displaysSearchBarInNavigationBar = true;
         self.navigationItem.titleView = self.searchBarTop
-        self.filterButton = UIBarButtonItem(title: "Filter", style:UIBarButtonItemStyle.Bordered, target:self, action:nil)
+        self.filterButton = UIBarButtonItem(title: "Filter", style:UIBarButtonItemStyle.Bordered, target:self, action:"showFilters")
         self.navigationItem.leftBarButtonItem = self.filterButton
+    }
+    
+    func showFilters(){
+        let filtersTableController = FiltersTableController()
+//        
+//        let movieDictionary = self.moviesArray![indexPath.row] as NSDictionary
+//        let postersDict = movieDictionary["posters"] as NSDictionary
+//        
+//        let thumbUrl = postersDict["thumbnail"] as NSString
+//        detailsViewController.fullImageUrl = thumbUrl.stringByReplacingOccurrencesOfString("tmb", withString: "ori")
+//        detailsViewController.movieDescriptionDict = movieDictionary
+        
+        self.navigationController?.pushViewController(filtersTableController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
