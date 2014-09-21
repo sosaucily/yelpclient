@@ -51,7 +51,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LIw-LG-8eD"/>
+                    <navigationItem key="navigationItem" id="LIw-LG-8eD">
+                        <barButtonItem key="leftBarButtonItem" id="gwL-CU-DZX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OG8-fS-dGR">
+                                <rect key="frame" x="16" y="11" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <segue destination="uql-5c-MB9" kind="show" id="F61-Do-q7q"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="resultsTableView" destination="lyL-cN-5gT" id="Rum-Al-tzB"/>
                     </connections>
@@ -60,42 +71,47 @@
             </objects>
             <point key="canvasLocation" x="994" y="468"/>
         </scene>
-        <!--Filters Table View Controller-->
-        <scene sceneID="ap3-oS-lD1">
+        <!--Filters Table Controller-->
+        <scene sceneID="Hrg-rb-CEy">
             <objects>
-                <tableViewController id="RH6-Rc-gdQ" customClass="FiltersTableViewController" customModule="yelpclient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="22" sectionFooterHeight="22" id="kTT-h9-ylD">
+                <tableViewController storyboardIdentifier="FiltersTableController" id="uql-5c-MB9" customClass="FiltersTableController" customModule="yelpclient" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="22" sectionFooterHeight="22" id="U1Q-WO-6Ki">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="filtercell" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtercell" rowHeight="82" id="DuM-dg-6bu" customClass="FilterCell" customModule="yelpclient" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtercell" rowHeight="103" id="hUL-hj-Pqq" customClass="FilterCell" customModule="yelpclient" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DuM-dg-6bu" id="npB-Jn-msn">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUL-hj-Pqq" id="2Z3-ia-ZCr">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3T-Ub-GhZ">
-                                            <rect key="frame" x="217" y="8" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjE-yP-OPz">
+                                            <rect key="frame" x="43" y="8" width="163" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-YL-imc">
+                                            <rect key="frame" x="246" y="3" width="51" height="31"/>
+                                        </switch>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="filterName" destination="k3T-Ub-GhZ" id="geS-bv-21r"/>
+                                    <outlet property="filterName" destination="sjE-yP-OPz" id="Kdr-FF-Hwd"/>
+                                    <outlet property="filterSwitch" destination="Mal-YL-imc" id="iv7-gz-fdf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
-                            <outlet property="dataSource" destination="RH6-Rc-gdQ" id="8QQ-wx-t9S"/>
-                            <outlet property="delegate" destination="RH6-Rc-gdQ" id="WUb-xS-2XO"/>
+                            <outlet property="dataSource" destination="uql-5c-MB9" id="eDi-vV-Q7I"/>
+                            <outlet property="delegate" destination="uql-5c-MB9" id="WJP-PI-EOb"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gdl-li-fdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Br-PP-rAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="994" y="1144"/>
+            <point key="canvasLocation" x="1693" y="468"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="npo-cy-0MB">

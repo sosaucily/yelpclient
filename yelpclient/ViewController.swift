@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterTableDelegate {
     
     @IBOutlet weak var resultsTableView: UITableView!
     var restaurantResults: [Restaurant] = [Restaurant]()
-//    var countrySearchController = UISearchController()
     let searchBarTop: UISearchBar = UISearchBar()
-    var filterButton: UIBarButtonItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,21 +22,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.searchBarTop.delegate = self
         self.searchDisplayController?.displaysSearchBarInNavigationBar = true;
         self.navigationItem.titleView = self.searchBarTop
-        self.filterButton = UIBarButtonItem(title: "Filter", style:UIBarButtonItemStyle.Bordered, target:self, action:"showFilters")
-        self.navigationItem.leftBarButtonItem = self.filterButton
-    }
-    
-    func showFilters(){
-        let filtersTableController = FiltersTableController()
-//        
-//        let movieDictionary = self.moviesArray![indexPath.row] as NSDictionary
-//        let postersDict = movieDictionary["posters"] as NSDictionary
-//        
-//        let thumbUrl = postersDict["thumbnail"] as NSString
-//        detailsViewController.fullImageUrl = thumbUrl.stringByReplacingOccurrencesOfString("tmb", withString: "ori")
-//        detailsViewController.movieDescriptionDict = movieDictionary
-        
-        self.navigationController?.pushViewController(filtersTableController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,12 +47,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         restaurantResults.append(Restaurant(description: "restaurant 2 is lame"))
     }
     
-//    func updateSearchResultsForSearchController(searchController: UISearchController){
-//        println("search triggered with \(searchController.searchBar.text)")
-//    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         println("search triggered with \(searchBar.text)")
+    }
+    
+    func supWithYouBro(message: String) {
+        println(message)
     }
 }
 

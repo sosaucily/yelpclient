@@ -13,6 +13,8 @@ class FilterCell: UITableViewCell {
 
     @IBOutlet weak var filterName: UILabel!
     
+    @IBOutlet weak var filterSwitch: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
