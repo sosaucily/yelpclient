@@ -30,6 +30,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.resultsTableView.estimatedRowHeight = 200
+        self.resultsTableView.rowHeight = UITableViewAutomaticDimension
+        
         self.searchBarTop.delegate = self
         self.searchDisplayController?.displaysSearchBarInNavigationBar = true;
         self.navigationItem.titleView = self.searchBarTop

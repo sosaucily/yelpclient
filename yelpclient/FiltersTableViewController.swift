@@ -19,7 +19,7 @@ class FiltersTableController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.estimatedRowHeight = 400
+        self.tableView.estimatedRowHeight = 200
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         var vcs = self.navigationController?.viewControllers
