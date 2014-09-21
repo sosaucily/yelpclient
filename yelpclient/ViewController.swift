@@ -10,18 +10,49 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FilterTableDelegate {
     
+    var client: YelpClient!
+    
+    // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
+    let yelpConsumerKey = "BeBsBEuYUeHESjJ-gB-3Mw"
+    let yelpConsumerSecret = "1t3Nw-VC0kwAJRK0NQskWV6Pk9o"
+    let yelpToken = "WKnNK35JBfL5uIuKKMQBigb75WB6xZKH"
+    let yelpTokenSecret = "190x3RR1Be_xmB8t5z-4AD8Mjq4"
+    
     @IBOutlet weak var resultsTableView: UITableView!
-    var restaurantResults: [Restaurant] = [Restaurant]()
+    var businesses: [Restaurant] = [Restaurant]()
     let searchBarTop: UISearchBar = UISearchBar()
+    
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.getResults()
-        
         self.searchBarTop.delegate = self
         self.searchDisplayController?.displaysSearchBarInNavigationBar = true;
         self.navigationItem.titleView = self.searchBarTop
+        
+        
+        client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
+        
+        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+                self.businesses = []
+                var dictArray = responseObject["businesses"] as? NSArray
+                
+                for biz in dictArray! {
+                    var biz = biz as NSDictionary
+                    var res = Restaurant(dataDict: biz)
+                    self.businesses.append(res)
+                }
+                self.resultsTableView.reloadData()
+            
+                println(self.businesses)
+            
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,21 +61,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantResults.count
+        return businesses.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = resultsTableView.dequeueReusableCellWithIdentifier("yelpcell") as YelpCellTableViewCell
+        let biz = businesses[indexPath.row]
+        let location = biz.location
 
-        cell.descriptionLabel.text = restaurantResults[indexPath.row].description
+        cell.nameLabel.text = "\(indexPath.row+1). \(biz.name)"
+        cell.dollarsLabel.text = "$$"
+        var cats = biz.categories
+        cell.categoriesLabel.text = ", ".join(cats.map({ "\($0)" }))
+        cell.addressLabel.text = "\(location!)"
+        
+        if (!biz.image_url.isEmpty) {
+            cell.imageIcon.setImageWithURL(NSURL(string: biz.image_url))
+        }
+        if (!biz.rating_img_url.isEmpty) {
+            cell.ratingImage.setImageWithURL(NSURL(string: biz.rating_img_url))
+        }
         
         return cell
-    }
-    
-    func getResults() {
-        restaurantResults.append(Restaurant(description: "restaurant 1 is yummy"))
-        restaurantResults.append(Restaurant(description: "restaurant 2 is lame"))
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){

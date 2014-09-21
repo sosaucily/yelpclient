@@ -12,7 +12,12 @@ class YelpCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imageIcon: UIImageView!
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var ratingImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dollarsLabel: UILabel!
+    @IBOutlet weak var categoriesLabel: UILabel!
+    
+    @IBOutlet weak var addressLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

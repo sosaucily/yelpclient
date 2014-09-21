@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C06D9F219CF4DF6008BEAC4 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */; };
 		1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */; };
 		1C92994519CE23C1001E16EE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994419CE23C1001E16EE /* Restaurant.swift */; };
 		1C92995D19CE4A9A001E16EE /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92995C19CE4A9A001E16EE /* FilterCell.swift */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		1C06D9F319CF4ECC008BEAC4 /* Yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpCellTableViewCell.swift; sourceTree = "<group>"; };
 		1C92994419CE23C1001E16EE /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		1C92995C19CE4A9A001E16EE /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */,
 				1C92994419CE23C1001E16EE /* Restaurant.swift */,
 				1C92995F19CE4F48001E16EE /* FiltersTableViewController.swift */,
+				1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */,
+				1C06D9F319CF4ECC008BEAC4 /* Yelp-Bridging-Header.h */,
 			);
 			path = yelpclient;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				1C92994519CE23C1001E16EE /* Restaurant.swift in Sources */,
 				1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */,
 				1CA62F0319CE150C003128D7 /* ViewController.swift in Sources */,
+				1C06D9F219CF4DF6008BEAC4 /* YelpClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +364,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -394,6 +401,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -407,6 +415,7 @@
 				INFOPLIST_FILE = yelpclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "yelpclient/Yelp-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -418,6 +427,7 @@
 				INFOPLIST_FILE = yelpclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "yelpclient/Yelp-Bridging-Header.h";
 			};
 			name = Release;
 		};
