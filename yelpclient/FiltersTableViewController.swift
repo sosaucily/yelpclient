@@ -9,12 +9,22 @@
 import UIKit
 
 @objc protocol FilterTableDelegate {
-    func supWithYouBro(message: String)
+    func returnSearchParams(searchParams: SearchResults)
 }
 
-class FiltersTableController: UITableViewController  {
+class SearchResults: NSObject {
+    var sortMetric: String = ""
+}
+
+class FiltersTableController: UITableViewController, SwitchFilterCellDelegate {
+    
+    let sectionHeaders = ["Sort by", "bla2", "bla3"]
+    
+    var searchParams: SearchResults = SearchResults()
     
     var delegate: FilterTableDelegate?
+    
+    var searchButton: UIBarButtonItem = UIBarButtonItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,31 +34,50 @@ class FiltersTableController: UITableViewController  {
         
         var vcs = self.navigationController?.viewControllers
         self.delegate = vcs?[0] as? FilterTableDelegate
+        
+        self.searchButton = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Bordered, target: self, action: "doSearch")
+        self.navigationItem.rightBarButtonItem = self.searchButton;
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        self.delegate?.supWithYouBro("bananas 4 dayz")
+    func doSearch() {
+        self.delegate?.returnSearchParams(self.searchParams)
+        self.navigationController?.popViewControllerAnimated(true)
     }
+    
+//    override func viewDidDisappear(animated: Bool) {}
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if (section == 0) {
+            return 1
+        } else {
+            return 3
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let table = self.tableView
         
-        let cell = table.dequeueReusableCellWithIdentifier("filtercell", forIndexPath: indexPath) as FilterCell
-        cell.filterName.text = "guy: \(indexPath.row)"
-        
-        return cell
+        if (indexPath.row == 0){
+            let cell = table.dequeueReusableCellWithIdentifier("dropdownFilterCell", forIndexPath: indexPath) as DropdownFilterCell
+            cell.delegate = self
+            return cell
+        } else {
+            let cell = table.dequeueReusableCellWithIdentifier("switchFilterCell", forIndexPath: indexPath) as SwitchFilterCell
+            cell.filterName.text = "sup guy"
+            return cell
+        }
+    }
+    
+    func sortValue(message: String) {
+        self.searchParams.sortMetric = message
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Some Header \(section)"
+        return "\(sectionHeaders[section])"
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

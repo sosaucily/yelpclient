@@ -33,7 +33,6 @@ class Restaurant: NSObject {
         )
         self.image_url = dataDict["image_url"] as NSString
         self.rating_img_url = dataDict["rating_img_url"] as NSString
-        println(dataDict["review_count"])
         self.review_count = dataDict["review_count"] as Int
     }
     

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rv3-So-xne">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -143,7 +144,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filtercell" rowHeight="103" id="hUL-hj-Pqq" customClass="FilterCell" customModule="yelpclient" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchFilterCell" rowHeight="103" id="hUL-hj-Pqq" customClass="SwitchFilterCell" customModule="yelpclient" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUL-hj-Pqq" id="2Z3-ia-ZCr">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -164,6 +165,28 @@
                                     <outlet property="filterSwitch" destination="Mal-YL-imc" id="iv7-gz-fdf"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dropdownFilterCell" rowHeight="206" id="lzd-iP-SKe" customClass="DropdownFilterCell" customModule="yelpclient" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lzd-iP-SKe" id="BRs-MZ-vw1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-dI-YUb">
+                                            <rect key="frame" x="0.0" y="22" width="320" height="162"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="lzd-iP-SKe" id="Z2m-kV-Blp"/>
+                                                <outlet property="delegate" destination="lzd-iP-SKe" id="S3i-o0-obt"/>
+                                            </connections>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="c4E-dI-YUb" firstAttribute="top" secondItem="BRs-MZ-vw1" secondAttribute="topMargin" constant="10" id="5vA-3J-fBH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="c4E-dI-YUb" secondAttribute="bottom" constant="10" id="CdX-FG-Uyz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dropdownPicker" destination="c4E-dI-YUb" id="Cea-XS-PP1"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -174,7 +197,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Br-PP-rAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693" y="468"/>
+            <point key="canvasLocation" x="1683" y="451"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="npo-cy-0MB">

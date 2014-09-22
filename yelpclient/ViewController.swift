@@ -52,8 +52,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 self.resultsTableView.reloadData()
             
-                println(self.businesses)
-            
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
@@ -93,8 +91,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         println("search triggered with \(searchBar.text)")
     }
     
-    func supWithYouBro(message: String) {
-        println(message)
+    func returnSearchParams(searchParams: SearchResults) {
+        println("Searching on: \(searchParams.sortMetric)")
     }
 }
 
