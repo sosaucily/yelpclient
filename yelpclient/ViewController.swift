@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var term: String = ""
     var categories: String = ""
+    var sortMetric: Int = 0
     
 
     required init(coder aDecoder: NSCoder) {
@@ -48,7 +49,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func doSearch() {
-        client.searchWithTerm(self.term, categories: self.categories, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+        client.searchWithTerm(self.term, categories: self.categories, sortBy: self.sortMetric, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
             self.businesses = []
             var dictArray = responseObject["businesses"] as? NSArray
             
@@ -125,6 +126,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (searchParams.mexican) {
             list.append("mexican")
         }
+        
+        self.sortMetric = searchParams.sortMetric
         
         
         self.categories = ",".join(list)

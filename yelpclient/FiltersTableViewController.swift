@@ -13,7 +13,7 @@ import UIKit
 }
 
 class SearchResults: NSObject {
-    var sortMetric: String = "best match"
+    var sortMetric: Int = 0
     var thai: Bool = true
     var mexican: Bool = true
     var chinese: Bool = true
@@ -98,7 +98,19 @@ class FiltersTableController: UITableViewController, DropdownFilterCellDelegate,
     }
     
     func sortValue(message: String) {
-        self.searchParams.sortMetric = message
+        var id = 0
+        switch message {
+        case "best match":
+            id = 1
+        case "distance":
+            id = 2
+        case "highest rated":
+            id = 3
+        default:
+            id = 0
+        }
+        
+        self.searchParams.sortMetric = id
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
