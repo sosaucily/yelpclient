@@ -3,6 +3,10 @@ Yelp Client
 
 ![Alt text](./yelp.gif?raw=true "Optional Title")
 
+Phew!
+
+This took a billion hours.  Or somewhere around 20.
+
 Project Requirements
 Search results page
 * Table rows should be dynamic height according to the content height
