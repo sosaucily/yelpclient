@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var businesses: [Restaurant] = [Restaurant]()
     let searchBarTop: UISearchBar = UISearchBar()
     
+    var term: String = ""
+    var categories: String = ""
+    
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -41,16 +44,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-                self.businesses = []
-                var dictArray = responseObject["businesses"] as? NSArray
-                
-                for biz in dictArray! {
-                    var biz = biz as NSDictionary
-                    var res = Restaurant(dataDict: biz)
-                    self.businesses.append(res)
-                }
-                self.resultsTableView.reloadData()
+        self.doSearch()
+    }
+    
+    func doSearch() {
+        client.searchWithTerm(self.term, categories: self.categories, success: { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            self.businesses = []
+            var dictArray = responseObject["businesses"] as? NSArray
+            
+            for biz in dictArray! {
+                var biz = biz as NSDictionary
+                var res = Restaurant(dataDict: biz)
+                self.businesses.append(res)
+            }
+            self.resultsTableView.reloadData()
             
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
@@ -64,6 +71,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.navigationController?.navigationBar.endEditing(true)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -88,15 +99,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
-        println("search triggered with \(searchBar.text)")
+        self.term = searchBar.text
+        
+        self.doSearch()
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText == "") {
+            self.term = ""
+            self.doSearch()
+        }
     }
     
     func returnSearchParams(searchParams: SearchResults) {
-        println("Searching on: \(searchParams.sortMetric)")
-        println("Thai: \(searchParams.thai)")
-        println("Mexican: \(searchParams.mexican)")
-        println("Italian: \(searchParams.italian)")
-        println("Chinese: \(searchParams.chinese)")
+        var list: [String] = []
+        if (searchParams.thai) {
+            list.append("thai")
+        }
+        if (searchParams.chinese) {
+            list.append("chinese")
+        }
+        if (searchParams.italian) {
+            list.append("italian")
+        }
+        if (searchParams.mexican) {
+            list.append("mexican")
+        }
+        
+        
+        self.categories = ",".join(list)
+        self.doSearch()
     }
 }
 

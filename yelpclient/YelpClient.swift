@@ -28,9 +28,11 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         self.requestSerializer.saveAccessToken(token)
     }
     
-    func searchWithTerm(term: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
+    func searchWithTerm(term: String, categories: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> Void {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-        var parameters = ["term": term, "location": "San Francisco"]
+        var parameters = ["term": term, "location": "San Francisco", "category_filter": categories]
+        
+        println("Doing search with params: \(parameters)")
         var response = self.GET("search", parameters: parameters,
             success: success,
             failure: self.fetchError)
@@ -38,7 +40,6 @@ class YelpClient: BDBOAuth1RequestOperationManager {
 
     func fetchError(operation: AFHTTPRequestOperation!,
         error: NSError!) -> Void {
-//            self.showNetworkError()
             println("error fetching yelp stuff")
     }
     

@@ -23,15 +23,18 @@ class Restaurant: NSObject {
     init(dataDict: NSDictionary) {
         self.name = dataDict["name"] as NSString
         
-        var catTuples = dataDict["categories"] as NSArray
-        for cat in catTuples {
-            self.categories.append(cat[0])
+        if (dataDict["categories"] != nil) {
+            var catTuples = dataDict["categories"] as NSArray
+            for cat in catTuples {
+                self.categories.append(cat[0])
+            }
         }
-        
         self.location = Location(
             dataDict: dataDict["location"] as NSDictionary
         )
-        self.image_url = dataDict["image_url"] as NSString
+        if (dataDict["image_url"] != nil) {
+            self.image_url = dataDict["image_url"] as NSString
+        }
         self.rating_img_url = dataDict["rating_img_url"] as NSString
         self.review_count = dataDict["review_count"] as Int
     }
@@ -53,7 +56,15 @@ class Location: NSObject {
     
     init(dataDict: NSDictionary) {
         self.address = dataDict["address"] as NSArray
-        self.neighborhoods = dataDict["neighborhoods"] as NSArray
+        if self.address.count == 0 {
+            self.address = [""] as NSArray
+        }
+        if (dataDict["neighborhoods"] != nil) {
+            self.neighborhoods = dataDict["neighborhoods"] as NSArray
+        }
+        if self.neighborhoods.count == 0 {
+            self.neighborhoods = [""] as NSArray
+        }
     }
     func description() -> String! {
         return "\(self.address[0]), \(self.neighborhoods[0])"
