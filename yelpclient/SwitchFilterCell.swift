@@ -8,9 +8,13 @@
 
 import UIKit
 
+@objc protocol SwitchFilterCellDelegate {
+    func setSwitch(message: String)
+}
+
 class SwitchFilterCell: UITableViewCell {
 
-
+    var delegate: SwitchFilterCellDelegate?
     @IBOutlet weak var filterName: UILabel!
     
     @IBOutlet weak var filterSwitch: UISwitch!
@@ -25,5 +29,13 @@ class SwitchFilterCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func triggerSwitch(){
+        self.delegate?.setSwitch(self.filterName.text!)
+    }
+    
+//    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        self.delegate?.sortValue(keys[row])
+//    }
 
 }

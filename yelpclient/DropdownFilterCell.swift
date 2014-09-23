@@ -8,13 +8,13 @@
 
 import UIKit
 
-@objc protocol SwitchFilterCellDelegate {
+@objc protocol DropdownFilterCellDelegate {
     func sortValue(message: String)
 }
 
 class DropdownFilterCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var delegate: SwitchFilterCellDelegate?
+    var delegate: DropdownFilterCellDelegate?
     var keys = ["best match","distance","highest rated"]
     
     @IBOutlet weak var dropdownPicker: UIPickerView!

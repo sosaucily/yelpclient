@@ -13,18 +13,25 @@ import UIKit
 }
 
 class SearchResults: NSObject {
-    var sortMetric: String = ""
+    var sortMetric: String = "best match"
+    var thai: Bool = true
+    var mexican: Bool = true
+    var chinese: Bool = true
+    var italian: Bool = true
 }
 
-class FiltersTableController: UITableViewController, SwitchFilterCellDelegate {
+class FiltersTableController: UITableViewController, DropdownFilterCellDelegate, SwitchFilterCellDelegate {
     
-    let sectionHeaders = ["Sort by", "bla2", "bla3"]
+    let sectionHeaders = ["Sort by", "Categories"]
+    let categories = ["thai","mexican", "chinese", "italian"]
     
     var searchParams: SearchResults = SearchResults()
     
     var delegate: FilterTableDelegate?
     
     var searchButton: UIBarButtonItem = UIBarButtonItem()
+    
+    var expanded: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,28 +54,46 @@ class FiltersTableController: UITableViewController, SwitchFilterCellDelegate {
 //    override func viewDidDisappear(animated: Bool) {}
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return 1
         } else {
-            return 3
+            if (!self.expanded) {
+                return 3
+            } else {
+                return 4
+            }
         }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let table = self.tableView
         
-        if (indexPath.row == 0){
+        if (indexPath.section == 0){
             let cell = table.dequeueReusableCellWithIdentifier("dropdownFilterCell", forIndexPath: indexPath) as DropdownFilterCell
             cell.delegate = self
             return cell
+        } else if (indexPath.row == 2 && !self.expanded) {
+            let cell = table.dequeueReusableCellWithIdentifier("seeAllCell", forIndexPath: indexPath) as SeeAllCell
+            return cell
         } else {
             let cell = table.dequeueReusableCellWithIdentifier("switchFilterCell", forIndexPath: indexPath) as SwitchFilterCell
-            cell.filterName.text = "sup guy"
+            cell.filterName.text = categories[indexPath.row]
+            cell.filterSwitch.addTarget(cell, action: "triggerSwitch", forControlEvents: UIControlEvents.ValueChanged)
+            cell.delegate = self
             return cell
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (!self.expanded) {
+            if (indexPath.section == 1 && indexPath.row == 2) {
+                self.expanded = true
+                self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
         }
     }
     
@@ -82,5 +107,21 @@ class FiltersTableController: UITableViewController, SwitchFilterCellDelegate {
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 75;
+    }
+    
+    func setSwitch(message: String) {
+        println(message)
+        switch message {
+        case "thai":
+            searchParams.thai = !searchParams.thai
+        case "mexican":
+            searchParams.mexican = !searchParams.mexican
+        case "chinese":
+            searchParams.chinese = !searchParams.chinese
+        case "italian":
+            searchParams.italian = !searchParams.italian
+        default:
+            break
+        }
     }
 }

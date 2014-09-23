@@ -93,6 +93,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func returnSearchParams(searchParams: SearchResults) {
         println("Searching on: \(searchParams.sortMetric)")
+        println("Thai: \(searchParams.thai)")
+        println("Mexican: \(searchParams.mexican)")
+        println("Italian: \(searchParams.italian)")
+        println("Chinese: \(searchParams.chinese)")
     }
 }
 

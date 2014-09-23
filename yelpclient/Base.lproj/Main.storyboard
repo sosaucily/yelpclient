@@ -165,13 +165,13 @@
                                     <outlet property="filterSwitch" destination="Mal-YL-imc" id="iv7-gz-fdf"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dropdownFilterCell" rowHeight="206" id="lzd-iP-SKe" customClass="DropdownFilterCell" customModule="yelpclient" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dropdownFilterCell" rowHeight="196" id="lzd-iP-SKe" customClass="DropdownFilterCell" customModule="yelpclient" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lzd-iP-SKe" id="BRs-MZ-vw1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-dI-YUb">
-                                            <rect key="frame" x="0.0" y="22" width="320" height="162"/>
+                                        <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-dI-YUb">
+                                            <rect key="frame" x="8" y="8" width="320" height="162"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="lzd-iP-SKe" id="Z2m-kV-Blp"/>
                                                 <outlet property="delegate" destination="lzd-iP-SKe" id="S3i-o0-obt"/>
@@ -186,6 +186,20 @@
                                 <connections>
                                     <outlet property="dropdownPicker" destination="c4E-dI-YUb" id="Cea-XS-PP1"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="seeAllCell" rowHeight="138" id="cVY-oL-ggN" customClass="SeeAllCell" customModule="yelpclient" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cVY-oL-ggN" id="YZU-BO-Uhl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See All" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjf-2P-OJ7">
+                                            <rect key="frame" x="94" y="8" width="78" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

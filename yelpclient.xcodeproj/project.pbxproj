@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C06D9F219CF4DF6008BEAC4 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */; };
+		1C4DF10219D117BD0018F896 /* SeeAllCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4DF10119D117BD0018F896 /* SeeAllCell.swift */; };
 		1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */; };
 		1C92994519CE23C1001E16EE /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92994419CE23C1001E16EE /* Restaurant.swift */; };
 		1C92995D19CE4A9A001E16EE /* SwitchFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C92995C19CE4A9A001E16EE /* SwitchFilterCell.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		1C06D9F319CF4ECC008BEAC4 /* Yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yelp-Bridging-Header.h"; sourceTree = "<group>"; };
+		1C4DF10119D117BD0018F896 /* SeeAllCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllCell.swift; sourceTree = "<group>"; };
 		1C92994219CE1A5C001E16EE /* YelpCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpCellTableViewCell.swift; sourceTree = "<group>"; };
 		1C92994419CE23C1001E16EE /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		1C92995C19CE4A9A001E16EE /* SwitchFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchFilterCell.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				1C92995F19CE4F48001E16EE /* FiltersTableViewController.swift */,
 				1C06D9F119CF4DF6008BEAC4 /* YelpClient.swift */,
 				1C06D9F319CF4ECC008BEAC4 /* Yelp-Bridging-Header.h */,
+				1C4DF10119D117BD0018F896 /* SeeAllCell.swift */,
 			);
 			path = yelpclient;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				1C92994319CE1A5C001E16EE /* YelpCellTableViewCell.swift in Sources */,
 				1CA62F0319CE150C003128D7 /* ViewController.swift in Sources */,
 				1CDF52B719CFA66C006C30BE /* DropdownFilterCell.swift in Sources */,
+				1C4DF10219D117BD0018F896 /* SeeAllCell.swift in Sources */,
 				1C06D9F219CF4DF6008BEAC4 /* YelpClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
